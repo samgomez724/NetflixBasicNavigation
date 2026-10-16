@@ -33,7 +33,7 @@ import me.fabiansuarez.compose.lab.netflixbasicnavigation.ui.theme.*
     showBackground = true,
 )
 @Composable
-fun RegisterStep3Screen() {
+fun RegisterStep3Screen(onClickBack:()-> Unit,onClickHome:()-> Unit) {
     val scrollState = rememberScrollState()
     var selectedPayment by remember { mutableStateOf(PaymentMethod.CARD) }
 
@@ -57,7 +57,9 @@ fun RegisterStep3Screen() {
 
             // ── Top Bar ──────────────────────────────────────────────────────
             RegisterTopBar(
-                onBackClick = { },
+                onBackClick = {
+                    onClickBack()
+                },
                 step = 3,
                 totalSteps = 3
             )
@@ -157,7 +159,9 @@ fun RegisterStep3Screen() {
 
                 // ── Start membership button ──────────────────────────────────
                 Button(
-                    onClick = {},
+                    onClick = {
+                        onClickHome()
+                    },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(54.dp),
@@ -772,4 +776,3 @@ fun PaymentLogosRow() {
         }
     }
 }
-

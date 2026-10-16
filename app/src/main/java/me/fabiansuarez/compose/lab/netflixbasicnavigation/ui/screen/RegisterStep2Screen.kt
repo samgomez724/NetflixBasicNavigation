@@ -33,7 +33,7 @@ import me.fabiansuarez.compose.lab.netflixbasicnavigation.ui.theme.*
     showSystemUi = true
 )
 @Composable
-fun RegisterStep2Screen() {
+fun RegisterStep2Screen(onClickBack:()-> Unit,onClickRegister3:()-> Unit) {
     val scrollState = rememberScrollState()
     var selectedPlan by remember { mutableStateOf(3) } // Premium selected by default
 
@@ -50,7 +50,9 @@ fun RegisterStep2Screen() {
 
             // ── Top Bar ──────────────────────────────────────────────────────
             RegisterTopBar(
-                onBackClick = {},
+                onBackClick = {
+                    onClickBack()
+                },
                 step = 2,
                 totalSteps = 3
             )
@@ -108,7 +110,9 @@ fun RegisterStep2Screen() {
 
                 // ── Continue button ──────────────────────────────────────────
                 Button(
-                    onClick = { },
+                    onClick = {
+                        onClickRegister3()
+                    },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(52.dp),
